@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/random"
+        android:icon="@drawable/ic_random_article"
+        android:title="随机一文"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/curr"
+        android:title="今日"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/prev"
+        android:title="前一天"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/next"
+        android:title="后一天"
+        app:showAsAction="never" />
+</menu>

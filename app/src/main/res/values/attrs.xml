@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--坐标轴线条粗细-->
+    <attr name="coordinatesLineWidth" format="dimension" />
+    <!--坐标轴字体大小-->
+    <attr name="coordinatesTextSize" format="dimension" />
+    <!--坐标轴字体颜色-->
+    <attr name="coordinatesTextColor" format="color" />
+
+    <attr name="lineColor" format="color" />
+
+    <attr name="lineWidth" format="dimension" />
+
+    <!--小圆点半径-->
+    <attr name="averageCircleRadius" format="dimension" />
+
+    <attr name="maxCircleColor" format="color" />
+
+    <attr name="minCircleColor" format="color" />
+
+    <attr name="backgroundColor" format="color" />
+
+    <declare-styleable name="LineChartView">
+        <attr name="coordinatesLineWidth" />
+        <attr name="coordinatesTextSize" />
+        <attr name="coordinatesTextColor" />
+        <attr name="lineColor" />
+        <attr name="lineWidth" />
+        <attr name="averageCircleRadius" />
+        <attr name="maxCircleColor" />
+        <attr name="minCircleColor" />
+        <attr name="backgroundColor" />
+    </declare-styleable>
+
+    <attr name="popupTextAlignment" format="enum">
+        <enum name="start" value="0"/>
+        <enum name="end" value="1"/>
+        <enum name="center" value="2"/>
+    </attr>
+
+    <declare-styleable name="NiceSpinner">
+        <attr name="arrowTint" format="color" />
+        <attr name="hideArrow" format="boolean" />
+        <attr name="arrowDrawable" format="reference|color"/>
+        <attr name="dropDownListPaddingBottom" format="dimension"/>
+        <attr name="backgroundSelector" format="integer"/>
+        <attr name="textTint" format="color"/>
+        <attr name="popupTextAlignment"/>
+    </declare-styleable>
+</resources>

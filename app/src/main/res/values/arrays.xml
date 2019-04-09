@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fms_type">
+        <item>中通</item>
+        <item>圆通</item>
+        <item>韵达</item>
+        <item>EMS</item>
+        <item>京东</item>
+        <item>优速</item>
+        <item>德邦</item>
+        <item>宅急送</item>
+    </string-array>
+</resources>

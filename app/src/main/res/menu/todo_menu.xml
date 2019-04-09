@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/change_date"
+        android:icon="@drawable/ic_change_date"
+        android:title="切换日期"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/only_finish"
+        android:title="当日已完成"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/only_unfinish"
+        android:title="当日未完成"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/all"
+        android:title="全部"
+        app:showAsAction="never" />
+</menu>
