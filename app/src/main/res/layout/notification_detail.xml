@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notification_detail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/notification_detail_iv"
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:padding="14dp" />
+
+            <TextView
+                android:id="@+id/notification_detail_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="15°"
+                android:textColor="#424242"
+                android:textSize="48sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="8dp">
+
+                <TextView
+                    android:id="@+id/notification_detail_temp_aqi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:shadowColor="@color/colorTextDark2nd"
+                    android:shadowDx="0.5"
+                    android:shadowDy="0.5"
+                    android:shadowRadius="1"
+                    android:text="-11° / 5°  AQI 49"
+                    android:textColor="#aa424242"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/notification_detail_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:shadowColor="@color/colorTextDark2nd"
+                    android:shadowDx="0.5"
+                    android:shadowDy="0.5"
+                    android:shadowRadius="1"
+                    android:text="晴天"
+                    android:textColor="#aa424242"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/notification_detail_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="潮州"
+                android:textColor="#aa424242"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/notification_detail_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="11:34"
+                android:textColor="#aa424242"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/daily_info"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daily_info_1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="星期一"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/daily_info_1_iv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/daily_info_1_temp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="-11° / 5°"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daily_info_2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="星期二"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/daily_info_2_iv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/daily_info_2_temp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="-11° / 5°"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daily_info_3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="星期三"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/daily_info_3_iv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/daily_info_3_temp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="-11° / 5°"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daily_info_4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="星期四"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/daily_info_4_iv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/daily_info_4_temp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="-11° / 5°"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daily_info_5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="星期五"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/daily_info_5_iv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/daily_info_5_temp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@color/colorTextDark2nd"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1"
+                android:text="-11° / 5°"
+                android:textColor="#aa424242"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
