@@ -2,12 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/notification_sample"
     android:layout_width="match_parent"
-    android:layout_height="84dp">
+    android:layout_height="84dp"
+    android:background="#ffffff">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_hint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:text="正在初始化..."
+        android:textColor="#dd000000"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/ll_weatherInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/notification_simple_iv"
@@ -65,13 +79,15 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_otherInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/notification_simple_city"

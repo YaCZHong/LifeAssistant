@@ -23,6 +23,7 @@ import com.czh.life_assistant.SelectCityActivity;
 import com.czh.life_assistant.adapter.MainAdapter;
 import com.czh.life_assistant.entity.forweather.WeatherJsonParser;
 import com.czh.life_assistant.entity.forweather.WeatherRootBean;
+import com.czh.life_assistant.service.NotificationService;
 import com.czh.life_assistant.util.PrefsUtil;
 import com.czh.life_assistant.util.RequestLocationUtil;
 import com.czh.life_assistant.util.RequestWeatherInfo;
@@ -31,13 +32,17 @@ import org.json.JSONException;
 
 public class SettingFragment extends Fragment {
 
-    private WeatherFragment weatherFragment;
-
     private LinearLayout ll_enable_location;
     private Switch switch_location;
-
     private LinearLayout ll_select_city;
     private TextView select_city_tv;
+
+    private LinearLayout ll_enable_notification;
+    private Switch switch_notification;
+    private LinearLayout ll_notification_style;
+    private TextView notification_style_tv;
+
+    private String[] arr_notify_type = {"普通", "详细"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +52,11 @@ public class SettingFragment extends Fragment {
         switch_location = view.findViewById(R.id.switch_location);
         ll_select_city = view.findViewById(R.id.select_city);
         select_city_tv = view.findViewById(R.id.select_city_tv);
+
+        ll_enable_notification = view.findViewById(R.id.enable_notification);
+        switch_notification = view.findViewById(R.id.switch_notification);
+        ll_notification_style = view.findViewById(R.id.notification_style);
+        notification_style_tv = view.findViewById(R.id.notification_style_tv);
 
         String isLocation = PrefsUtil.getInfoFromPrefs(getActivity(), "isLocation");
         if (isLocation != null) {
@@ -101,8 +111,80 @@ public class SettingFragment extends Fragment {
             }
         });
 
+
+        String notification_style = PrefsUtil.getInfoFromPrefs(getActivity(), "notification_style");
+        if (notification_style != null) {
+            notification_style_tv.setText(notification_style);
+        }
+
+        String isNotify = PrefsUtil.getInfoFromPrefs(getActivity(), "isNotify");
+        if (isNotify != null) {
+            if (isNotify.equals("YES")) {
+                switch_notification.setChecked(true);
+            } else {
+                switch_notification.setChecked(false);
+            }
+        } else {
+            switch_notification.setChecked(false);
+        }
+
+        ll_enable_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isChecked = switch_notification.isChecked();
+                switch_notification.setChecked(!isChecked);
+            }
+        });
+
+        switch_notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    PrefsUtil.saveInfoToPrefs(getActivity(), "isNotify", "YES");
+                    getActivity().startService(new Intent(getActivity(), NotificationService.class));
+                } else {
+                    PrefsUtil.saveInfoToPrefs(getActivity(), "isNotify", "NO");
+                    getActivity().stopService(new Intent(getActivity(), NotificationService.class));
+                }
+            }
+        });
+
+        ll_notification_style.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] singleChoiceItems = getResources().getStringArray(R.array.notification_style);
+                int itemSelected = 0;
+                String notification_style = PrefsUtil.getInfoFromPrefs(getActivity(), "notification_style");
+
+                if (notification_style != null) {
+                    if (notification_style.equals(arr_notify_type[1])) {
+                        itemSelected = 1;
+                    }
+                }
+
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("请选择通知样式")
+                        .setSingleChoiceItems(singleChoiceItems, itemSelected, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                PrefsUtil.saveInfoToPrefs(getActivity(), "notification_style", arr_notify_type[i]);
+                                notification_style_tv.setText(arr_notify_type[i]);
+                                String isNotify = PrefsUtil.getInfoFromPrefs(getActivity(), "isNotify");
+                                if (isNotify != null) {
+                                    if (isNotify.equals("YES")) {
+                                        getActivity().startService(new Intent(getActivity(), NotificationService.class));
+                                    }
+                                }
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .setNegativeButton(("取消"), null).show();
+            }
+        });
+
         return view;
     }
+
 
     public void showLocationDialog() {
         LocationManager locManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);

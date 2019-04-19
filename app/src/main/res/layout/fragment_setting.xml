@@ -24,7 +24,7 @@
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:paddingStart="36dp"
-                    android:text="天气"
+                    android:text="城市"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -93,6 +93,81 @@
                         android:src="@drawable/ic_right_select" />
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="36dp"
+                    android:text="通知栏"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginEnd="36dp"
+                    android:background="#aacfd8dc" />
+
+
+                <LinearLayout
+                    android:id="@+id/enable_notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingStart="36dp"
+                    android:paddingEnd="36dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="启用通知栏"
+                        android:textSize="14sp" />
+
+                    <Switch
+                        android:id="@+id/switch_notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/notification_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingStart="36dp"
+                    android:paddingEnd="36dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="通知栏样式"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/notification_style_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="普通"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="match_parent"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_right_select" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

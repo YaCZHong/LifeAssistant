@@ -177,16 +177,18 @@ public class WeatherFragment extends Fragment {
                         @Override
                         public void requestWeatherSuccess(Context context, String cityInfo) {
                             setSwipeRefreshLayoutVisable(false);
-                            String weatherInfo = PrefsUtil.getInfoFromPrefs(getActivity(), cityInfo + "--weatherInfo");
-                            if (weatherInfo != null) {
-                                try {
-                                    weatherRootBean = WeatherJsonParser.getWeatherInfo(weatherInfo);
-                                    showData(weatherRootBean, cityInfo);
-                                    showToast("获取数据成功");
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
+                            getActivity().sendBroadcast(new Intent().setAction("com.czh.life_assistant.weatherUpdate"));
+//                            String weatherInfo = PrefsUtil.getInfoFromPrefs(getActivity(), cityInfo + "--weatherInfo");
+//                            if (weatherInfo != null) {
+//                                try {
+//                                    weatherRootBean = WeatherJsonParser.getWeatherInfo(weatherInfo);
+//                                    showData(weatherRootBean, cityInfo);
+//                                    showToast("获取数据成功");
+//                                    getActivity().sendBroadcast(new Intent().setAction(Intent.ACTION_DATE_CHANGED));
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
                         }
 
                         @Override

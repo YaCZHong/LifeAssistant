@@ -1,19 +1,31 @@
 package com.czh.life_assistant;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.czh.life_assistant.adapter.MainAdapter;
+import com.czh.life_assistant.entity.forweather.WeatherJsonParser;
+import com.czh.life_assistant.entity.forweather.WeatherRootBean;
+import com.czh.life_assistant.fragment.WeatherFragment;
+import com.czh.life_assistant.service.NotificationService;
+import com.czh.life_assistant.util.PrefsUtil;
 
+import org.json.JSONException;
 import org.litepal.tablemanager.Connector;
 
 import java.util.ArrayList;
@@ -23,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private BottomNavigationView navigation;
+    private IntentFilter intentFilter;
+    private WeatherChangeReceiver weatherChangeReceiver;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -72,6 +86,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        intentFilter = new IntentFilter();
+        intentFilter.addAction("com.czh.life_assistant.weatherUpdate");
+        weatherChangeReceiver = new WeatherChangeReceiver();
+        registerReceiver(weatherChangeReceiver, intentFilter);
+
         initView();
         requestPermission();
 
@@ -80,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
          * */
         Connector.getDatabase();
 
+        String isNotify = PrefsUtil.getInfoFromPrefs(this, "isNotify");
+        if (isNotify != null && isNotify.equals("YES")) {
+            startService(new Intent(MainActivity.this, NotificationService.class));
+        }
     }
 
     /*
@@ -131,7 +155,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(weatherChangeReceiver);
+    }
+
     public ViewPager getViewPager() {
         return viewPager;
+    }
+
+    class WeatherChangeReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            Log.d("MainActivity:","Receice...");
+
+            final String selectCity = PrefsUtil.getInfoFromPrefs(MainActivity.this, "selectCity");
+            if (selectCity != null) {
+                Fragment fragment = ((MainAdapter) getViewPager().getAdapter()).getItem(0);
+                String weatherInfo = PrefsUtil.getInfoFromPrefs(MainActivity.this, selectCity.split("--")[0] + "--weatherInfo");
+                if (weatherInfo != null) {
+                    try {
+                        WeatherRootBean weatherRootBean = WeatherJsonParser.getWeatherInfo(weatherInfo);
+                        ((WeatherFragment) fragment).showData(weatherRootBean, selectCity);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 }

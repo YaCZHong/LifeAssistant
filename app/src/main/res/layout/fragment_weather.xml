@@ -8,6 +8,7 @@
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#f4f4f4"
         android:scrollbars="none">
 
         <LinearLayout
