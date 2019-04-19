@@ -85,7 +85,6 @@ public class DailyWeatherActivity extends AppCompatActivity {
         weatherDailyAdapter = new WeatherDailyAdapter(DailyWeatherActivity.this, R.layout.activity_daily_listview_item, dailyList);
         recyclerView.setAdapter(weatherDailyAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_show);
         recyclerView.startAnimation(animation);
 

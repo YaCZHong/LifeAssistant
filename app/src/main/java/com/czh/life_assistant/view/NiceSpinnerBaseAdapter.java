@@ -57,7 +57,7 @@ public abstract class NiceSpinnerBaseAdapter<T> extends BaseAdapter {
         TextView textView;
 
         if (convertView == null) {
-            convertView = View.inflate(context, R.layout.spinner_list_item, null);
+            convertView = View.inflate(context, R.layout.item_nicespinner, null);
             textView = convertView.findViewById(R.id.text_view_spinner);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

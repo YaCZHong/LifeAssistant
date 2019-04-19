@@ -34,7 +34,7 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.language_recycleview_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_language, parent, false);
         final ViewHolder holder = new ViewHolder(view);
 
         if (mOnItemClickLitener != null) {

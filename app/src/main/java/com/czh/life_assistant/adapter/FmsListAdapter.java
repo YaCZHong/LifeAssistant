@@ -47,7 +47,7 @@ public class FmsListAdapter extends RecyclerView.Adapter<FmsListAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fmslist_recyclerview_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fms, parent, false);
         final ViewHolder holder = new ViewHolder(view);
 
         if (mOnItemClickLitener != null) {

@@ -34,7 +34,7 @@ public class FmsInfoAdapter extends RecyclerView.Adapter<FmsInfoAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fms_recycleview_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fms_detail, parent, false);
         final ViewHolder holder = new ViewHolder(view);
         return holder;
     }

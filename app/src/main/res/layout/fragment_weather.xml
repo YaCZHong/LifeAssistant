@@ -8,7 +8,6 @@
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
         android:scrollbars="none">
 
         <LinearLayout
@@ -28,9 +27,9 @@
                     android:scaleType="centerCrop" />
             </RelativeLayout>
 
-            <include layout="@layout/layout_hourly" />
-            <include layout="@layout/layout_daily_vertical" />
-            <include layout="@layout/layout_other" />
+            <include layout="@layout/include_layout_hourly" />
+            <include layout="@layout/include_layout_daily_vertical" />
+            <include layout="@layout/include_layout_other" />
         </LinearLayout>
     </ScrollView>
 

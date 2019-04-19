@@ -77,9 +77,14 @@
             android:name=".DailyWeatherActivity"
             android:label="15天概况" />
         <activity
-            android:name=".AccountsActivity"
-            android:label=""
-            android:theme="@style/NoActionBarAppTheme" />
+            android:name=".AlmanacActivity"
+            android:label="老黄历" />
+        <activity
+            android:name=".NewsActivity"
+            android:label="新闻列表" />
+        <activity
+            android:name=".NewActivity"
+            android:label="新闻详情" />
     </application>
 
 </manifest>
