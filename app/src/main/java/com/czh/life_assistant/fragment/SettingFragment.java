@@ -139,12 +139,31 @@ public class SettingFragment extends Fragment {
         switch_notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    PrefsUtil.saveInfoToPrefs(getActivity(), "isNotify", "YES");
-                    getActivity().startService(new Intent(getActivity(), NotificationService.class));
+
+                String selectCity = PrefsUtil.getInfoFromPrefs(getActivity(), "selectCity");
+
+                if (selectCity == null) {
+                    if (switch_notification.isChecked()) {
+                        AlertDialog.Builder AlertDialog = new AlertDialog.Builder(getActivity());
+                        AlertDialog.setTitle("温馨提示");
+                        AlertDialog.setMessage("您需要先选择城市后才能开启通知栏");
+                        AlertDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch_notification.setChecked(false);
+                            }
+                        }).create();
+                        AlertDialog.show();
+                    }
+
                 } else {
-                    PrefsUtil.saveInfoToPrefs(getActivity(), "isNotify", "NO");
-                    getActivity().stopService(new Intent(getActivity(), NotificationService.class));
+                    if (isChecked) {
+                        PrefsUtil.saveInfoToPrefs(getActivity(), "isNotify", "YES");
+                        getActivity().startService(new Intent(getActivity(), NotificationService.class));
+                    } else {
+                        PrefsUtil.saveInfoToPrefs(getActivity(), "isNotify", "NO");
+                        getActivity().stopService(new Intent(getActivity(), NotificationService.class));
+                    }
                 }
             }
         });
