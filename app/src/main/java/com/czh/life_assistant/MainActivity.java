@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            Log.d("MainActivity:","Receice...");
+           // Log.d("MainActivity:","Receice...");
 
             final String selectCity = PrefsUtil.getInfoFromPrefs(MainActivity.this, "selectCity");
             if (selectCity != null) {

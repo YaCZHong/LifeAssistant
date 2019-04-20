@@ -17,18 +17,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.czh.life_assistant.MainActivity;
 import com.czh.life_assistant.R;
 import com.czh.life_assistant.SelectCityActivity;
-import com.czh.life_assistant.adapter.MainAdapter;
-import com.czh.life_assistant.entity.forweather.WeatherJsonParser;
-import com.czh.life_assistant.entity.forweather.WeatherRootBean;
 import com.czh.life_assistant.service.NotificationService;
 import com.czh.life_assistant.util.PrefsUtil;
 import com.czh.life_assistant.util.RequestLocationUtil;
 import com.czh.life_assistant.util.RequestWeatherInfo;
-
-import org.json.JSONException;
 
 public class SettingFragment extends Fragment {
 

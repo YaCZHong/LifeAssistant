@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.czh.life_assistant.DailyWeatherActivity;
 import com.czh.life_assistant.R;
+import com.czh.life_assistant.WeatherAlertActivity;
 import com.czh.life_assistant.entity.forweather.WeatherJsonParser;
 import com.czh.life_assistant.entity.forweather.WeatherRootBean;
 import com.czh.life_assistant.util.GetAQIqltyUtil;
@@ -49,6 +50,7 @@ public class WeatherFragment extends Fragment {
     private TextView weather_temp_now;
     private TextView weather_real_description;
     private TextView weather_update_time;
+    private TextView weather_alert;
 
     /*
      * daily
@@ -252,6 +254,14 @@ public class WeatherFragment extends Fragment {
         weather_real_status_icon = view.findViewById(R.id.weather_real_status_icon);
         weather_real_description = view.findViewById(R.id.weather_real_description);
         weather_update_time = view.findViewById(R.id.weather_update_time);
+        weather_alert = view.findViewById(R.id.tv_weather_alert);
+        weather_alert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, WeatherAlertActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
 
         /*
          * daily
@@ -428,10 +438,10 @@ public class WeatherFragment extends Fragment {
                 day_5_temp_max.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(4).getMax()) + "°/");
 
                 day_1_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(0).getMin()) + "°");
-                day_2_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(0).getMin()) + "°");
-                day_3_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(0).getMin()) + "°");
-                day_4_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(0).getMin()) + "°");
-                day_5_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(0).getMin()) + "°");
+                day_2_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(1).getMin()) + "°");
+                day_3_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(2).getMin()) + "°");
+                day_4_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(3).getMin()) + "°");
+                day_5_temp_min.setText(String.valueOf((int) weatherRootBean.getResult().getDaily().getTemperature().get(4).getMin()) + "°");
 
                 day_1_iv.setImageResource(GetImageUtil.getImage(mContext, weatherRootBean.getResult().getDaily().getSkycon().get(0).getValue()));
                 day_2_iv.setImageResource(GetImageUtil.getImage(mContext, weatherRootBean.getResult().getDaily().getSkycon().get(1).getValue()));
@@ -512,14 +522,13 @@ public class WeatherFragment extends Fragment {
                 lineChartView.setxValues(xValues);
                 lineChartView.setChange();
 
-//                int alertCount = weatherRootBean.getResult().getAlert().getContent().size();
-//
-//                if (alertCount != 0)
-//
-//                {
-//                    weather_alert.setVisibility(View.VISIBLE);
-//                    weather_alert.setText(AlertCodeUtil.getAlertType(weatherRootBean.getResult().getAlert().getContent().get(alertCount - 1).getCode()));
-//                }
+                int alertCount = weatherRootBean.getResult().getAlert().getContent().size();
+
+                if (alertCount != 0) {
+                    weather_alert.setVisibility(View.VISIBLE);
+                }else {
+                    weather_alert.setVisibility(View.GONE);
+                }
             }
         });
     }

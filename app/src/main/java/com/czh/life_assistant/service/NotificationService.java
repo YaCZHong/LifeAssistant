@@ -38,7 +38,6 @@ public class NotificationService extends Service implements RequestWeatherInfo.O
     private AlarmManager alarmManager;
     private NotificationManager notificationManager;
     private PendingIntent pi;
-    private String selectCity;
     private String[] arr_notify_type = {"普通", "详细"};
 
     private IntentFilter intentFilter;
@@ -92,7 +91,7 @@ public class NotificationService extends Service implements RequestWeatherInfo.O
         notification = builder.build();
         startForeground(1, notification);
 
-        selectCity = PrefsUtil.getInfoFromPrefs(getApplicationContext(), "selectCity");
+        String selectCity = PrefsUtil.getInfoFromPrefs(getApplicationContext(), "selectCity");
         RequestWeatherInfo.RequestWeather(getApplicationContext(), selectCity.split("--")[0], selectCity.split("--")[1], this);
 
         /*
@@ -164,6 +163,7 @@ public class NotificationService extends Service implements RequestWeatherInfo.O
     private void updateRemoteView(WeatherRootBean weatherRootBean) {
         Notification notification;
         RemoteViews remoteViews = null;
+        String selectCity = PrefsUtil.getInfoFromPrefs(getApplicationContext(), "selectCity");
         Intent toMain = new Intent(this, MainActivity.class);
         String notification_style = PrefsUtil.getInfoFromPrefs(getApplicationContext(), "notification_style");
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getApplicationContext());
@@ -270,7 +270,7 @@ public class NotificationService extends Service implements RequestWeatherInfo.O
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            Log.d("NotificationService:","Receice...");
+            // Log.d("NotificationService:","Receice...");
 
             WeatherRootBean weatherRootBean = getWeatherInfo();
             if (weatherRootBean != null) {

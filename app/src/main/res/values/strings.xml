@@ -2,6 +2,6 @@
     <string name="app_name">生活小助手</string>
     <string name="title_home">主页</string>
     <string name="title_weather">天气</string>
-    <string name="title_setting">设置</string>
+    <string name="title_setting">天气设置</string>
     <string name="weather_top_bg">WEATHER_TOP_BG</string>
 </resources>
