@@ -11,16 +11,75 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/ll_article"
+            android:background="@color/article_bg_putong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_bg_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tv_bg"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="3dp"
+                    android:text="护眼模式"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_size_add"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tv_bg"
+                    android:gravity="center"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="字体大小  +"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_size_sub"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tv_bg"
+                    android:gravity="center"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="字体大小  -"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="4dp"
                 android:gravity="center"
                 android:textColor="@color/colorTextDark"
                 android:textSize="24sp" />
@@ -28,8 +87,9 @@
             <TextView
                 android:id="@+id/author"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:textColor="@color/colorTextDark2nd"
                 android:textSize="14sp" />
@@ -43,11 +103,11 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="5dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="24dp"
+                android:lineSpacingExtra="8dp"
                 android:textColor="@color/colorTextDark"
                 android:textSize="16sp" />
 

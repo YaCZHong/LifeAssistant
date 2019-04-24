@@ -83,7 +83,7 @@ public class NewsActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 closeProgressDialog();
-                swipeRefreshLayout.setRefreshing(false);
+                closeSwipeRefresh();
                 showToast("加载失败");
                 showNothing();
             }
@@ -92,7 +92,7 @@ public class NewsActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 String newsInfo = response.body().string();
                 closeProgressDialog();
-                swipeRefreshLayout.setRefreshing(false);
+                closeSwipeRefresh();
                 try {
                     NewsRootBean newsRootBean = NewsJsonParser.getNews(newsInfo);
                     showView(newsRootBean);
@@ -155,6 +155,15 @@ public class NewsActivity extends AppCompatActivity {
         }
     }
 
+    private void closeSwipeRefresh(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+    }
+
     private void showToast(final String msg) {
         runOnUiThread(new Runnable() {
             @Override
@@ -163,6 +172,8 @@ public class NewsActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

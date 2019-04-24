@@ -4,9 +4,11 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,10 @@ public class DailyArticleActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
     private ScrollView scrollView;
+    private LinearLayout ll_article;
+    private TextView tv_bg_mode;
+    private TextView tv_size_add;
+    private TextView tv_size_sub;
     private TextView title;
     private TextView author;
     private TextView content;
@@ -37,6 +43,40 @@ public class DailyArticleActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         scrollView = findViewById(R.id.daily_article_scrollView);
+        ll_article = findViewById(R.id.ll_article);
+        tv_bg_mode = findViewById(R.id.tv_bg_mode);
+        tv_size_add = findViewById(R.id.tv_size_add);
+        tv_size_sub = findViewById(R.id.tv_size_sub);
+
+        tv_bg_mode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (tv_bg_mode.getText().toString().trim().equals("护眼模式")) {
+                    ll_article.setBackgroundColor(getResources().getColor(R.color.article_bg_huyan));
+                    tv_bg_mode.setText("普通模式");
+                } else {
+                    ll_article.setBackgroundColor(getResources().getColor(R.color.article_bg_putong));
+                    tv_bg_mode.setText("护眼模式");
+                }
+
+
+            }
+        });
+
+        tv_size_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                content.setTextSize(TypedValue.COMPLEX_UNIT_PX, content.getTextSize() + 2);
+            }
+        });
+
+        tv_size_sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                content.setTextSize(TypedValue.COMPLEX_UNIT_PX,content.getTextSize() - 2);
+            }
+        });
+
         title = findViewById(R.id.title);
         author = findViewById(R.id.author);
         content = findViewById(R.id.content);

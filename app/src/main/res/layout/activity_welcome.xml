@@ -9,20 +9,20 @@
 
     <com.czh.life_assistant.view.BubbleView
         android:id="@+id/circle_view"
-        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true" />
 
     <TextView
         android:id="@+id/center_tv"
-        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="88dp"
         android:alpha="0"
+        android:fitsSystemWindows="true"
         android:gravity="center"
         android:text="欢迎你"
         android:textColor="@android:color/white"
-        android:textSize="40sp" />
+        android:textSize="32sp" />
 
 </android.support.design.widget.CoordinatorLayout>

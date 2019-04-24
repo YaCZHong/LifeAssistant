@@ -72,7 +72,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.tv_title.setText(entity.getTitle());
         holder.tv_time.setText(entity.getTime());
         holder.tv_author_name.setText(entity.getAuthor_name());
-        Picasso.with(context).load(entity.getImage_url()).into(holder.iv_image);
+        Picasso.with(context).load(entity.getImage_url()).placeholder(R.drawable.ic_loading).into(holder.iv_image);
     }
 
     @Override

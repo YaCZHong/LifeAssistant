@@ -61,15 +61,15 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="16dp"
+                        android:background="@drawable/weather_alert_bg"
                         android:paddingStart="8dp"
-                        android:visibility="gone"
-                        android:paddingEnd="8dp"
                         android:paddingTop="2dp"
+                        android:paddingEnd="8dp"
                         android:paddingBottom="2dp"
+                        android:text="天气预警"
                         android:textColor="#ffffff"
                         android:textSize="11sp"
-                        android:background="@drawable/weather_alert_bg"
-                        android:text="天气预警" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -100,7 +100,7 @@
                     android:marqueeRepeatLimit="marquee_forever"
                     android:scrollHorizontally="true"
                     android:singleLine="true"
-                    android:text="暂无数据"
+                    android:text="请到天气设置页面设置目标城市"
                     android:textColor="@color/colorTextGrey"
                     android:textSize="13sp" />
             </LinearLayout>

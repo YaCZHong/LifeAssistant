@@ -227,7 +227,7 @@ public class BubbleView extends View {
         }
 
         ValueAnimator floatAnimator = ValueAnimator.ofFloat(0, 1);
-        floatAnimator.setDuration(3000);
+        floatAnimator.setDuration(2000);
         floatAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         floatAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -255,7 +255,7 @@ public class BubbleView extends View {
      */
     private ValueAnimator outAnimation() {
         ValueAnimator outAnimator = ValueAnimator.ofFloat(0, 1);
-        outAnimator.setDuration(600);
+        outAnimator.setDuration(400);
         outAnimator.setInterpolator(new DecelerateInterpolator());
         outAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override

@@ -14,6 +14,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;

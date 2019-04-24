@@ -16,4 +16,7 @@
     <color name="colorTextLight">#fafafa</color>
     <color name="colorTextLight2nd">#f5f5f5</color>
 
+    <color name="article_bg_huyan">#c7edcc</color>
+    <color name="article_bg_putong">#fafafa</color>
+
 </resources>

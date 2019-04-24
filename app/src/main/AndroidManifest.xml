@@ -92,7 +92,9 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".WeatherAlertActivity" />
+        <activity
+            android:name=".WeatherAlertActivity"
+            android:label="天气预警" />
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/NoActionBarAppTheme">
