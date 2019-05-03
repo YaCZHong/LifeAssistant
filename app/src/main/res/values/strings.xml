@@ -4,4 +4,6 @@
     <string name="title_weather">天气</string>
     <string name="title_setting">天气设置</string>
     <string name="weather_top_bg">WEATHER_TOP_BG</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

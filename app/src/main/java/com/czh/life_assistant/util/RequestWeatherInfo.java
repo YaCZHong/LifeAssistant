@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
+import com.czh.life_assistant.Widget.FourOneWidget;
+import com.czh.life_assistant.Widget.FourTwoWidget;
+
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -41,7 +44,7 @@ public class RequestWeatherInfo {
                         PrefsUtil.saveInfoToPrefs(context, cityInfo + "--updateInfo", updateInfo);
                         listener.requestWeatherSuccess(context, cityInfo);
 
-//                        sendBroadcast(context);
+                        sendBroadcast(context);
 //                        showNotification(context);
 
                     }
@@ -63,9 +66,14 @@ public class RequestWeatherInfo {
      * 发送更新小部件广播
      * */
     public static void sendBroadcast(Context context) {
-        Intent intent = new Intent("com.czh.weather.action.MYWIDGET_UPDATE");
+        Intent intent = new Intent("com.czh.life_assistant.action.MYWIDGET_UPDATE");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
+            ComponentName componentName = new ComponentName(context, FourOneWidget.class);
+            intent.setComponent(componentName);
+            context.sendBroadcast(intent);
+            componentName = new ComponentName(context, FourTwoWidget.class);
+            intent.setComponent(componentName);
+            context.sendBroadcast(intent);
         } else {
             context.sendBroadcast(intent);
         }
