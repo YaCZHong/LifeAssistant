@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.czh.life_assistant.R;
 import com.czh.life_assistant.SelectCityActivity;
+import com.czh.life_assistant.service.AutoUpdateWeather;
 import com.czh.life_assistant.service.NotificationService;
 import com.czh.life_assistant.util.PrefsUtil;
 import com.czh.life_assistant.util.RequestLocationUtil;
@@ -36,7 +39,13 @@ public class SettingFragment extends Fragment {
     private LinearLayout ll_notification_style;
     private TextView notification_style_tv;
 
+    private LinearLayout ll_enable_autoUpdate;
+    private Switch switch_autoUpdate;
+    private LinearLayout ll_update_frequency;
+    private TextView update_frequency_tv;
+
     private String[] arr_notify_type = {"普通", "详细"};
+    private String[] arr_update_frequency = {"30分钟", "1小时", "2小时", "3小时", "4小时", "8小时"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +61,14 @@ public class SettingFragment extends Fragment {
         ll_notification_style = view.findViewById(R.id.notification_style);
         notification_style_tv = view.findViewById(R.id.notification_style_tv);
 
+        ll_enable_autoUpdate = view.findViewById(R.id.enable_auto_update);
+        switch_autoUpdate = view.findViewById(R.id.switch_auto_update);
+        ll_update_frequency = view.findViewById(R.id.auto_update_frequency);
+        update_frequency_tv = view.findViewById(R.id.tv_auto_update_frequency);
+
+        /*
+         * 自动定位
+         * */
         String isLocation = PrefsUtil.getInfoFromPrefs(getActivity(), "isLocation");
         if (isLocation != null) {
             if (isLocation.equals("YES")) {
@@ -105,7 +122,9 @@ public class SettingFragment extends Fragment {
             }
         });
 
-
+        /*
+         *通知栏
+         * */
         String notification_style = PrefsUtil.getInfoFromPrefs(getActivity(), "notification_style");
         if (notification_style != null) {
             notification_style_tv.setText(notification_style);
@@ -192,6 +211,84 @@ public class SettingFragment extends Fragment {
                             }
                         })
                         .setNegativeButton(("取消"), null).show();
+            }
+        });
+
+        /*
+         * 后台服务
+         * */
+
+        String update_frequency = PrefsUtil.getInfoFromPrefs(getActivity(), "update_frequency");
+        if (update_frequency != null) {
+            update_frequency_tv.setText(update_frequency);
+        }
+
+        String isAutoUpdate = PrefsUtil.getInfoFromPrefs(getActivity(), "isAutoUpdate");
+        if (isAutoUpdate != null) {
+            if (isAutoUpdate.equals("YES")) {
+                switch_autoUpdate.setChecked(true);
+            } else {
+                switch_autoUpdate.setChecked(false);
+            }
+        } else {
+            switch_autoUpdate.setChecked(false);
+        }
+
+        ll_enable_autoUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isChecked = switch_autoUpdate.isChecked();
+                switch_autoUpdate.setChecked(!isChecked);
+            }
+        });
+
+        switch_autoUpdate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    getActivity().startService(new Intent(getActivity(), AutoUpdateWeather.class));
+                    PrefsUtil.saveInfoToPrefs(getActivity(), "isAutoUpdate", "YES");
+                } else {
+                    getActivity().stopService(new Intent(getActivity(), AutoUpdateWeather.class));
+                    PrefsUtil.saveInfoToPrefs(getActivity(), "isAutoUpdate", "NO");
+                }
+            }
+        });
+
+        ll_update_frequency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] singleChoiceItems = getResources().getStringArray(R.array.update_frequency);
+                int itemSelected = 0;
+
+                String update_frequency = PrefsUtil.getInfoFromPrefs(getActivity(), "update_frequency");
+
+                if (update_frequency != null) {
+                    for (int i = 0; i < 6; i++) {
+                        if (update_frequency.equals(arr_update_frequency[i])) {
+                            itemSelected = i;
+                            break;
+                        }
+                    }
+                }
+
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("请选择更新频率")
+                        .setSingleChoiceItems(singleChoiceItems, itemSelected, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                PrefsUtil.saveInfoToPrefs(getActivity(), "update_frequency", arr_update_frequency[i]);
+                                update_frequency_tv.setText(arr_update_frequency[i]);
+                                String isAutoUpdate = PrefsUtil.getInfoFromPrefs(getActivity(), "isAutoUpdate");
+                                if (isAutoUpdate != null && isAutoUpdate.equals("YES")) {
+                                    Intent intent = new Intent(getActivity(), AutoUpdateWeather.class);
+                                    getActivity().startService(intent);
+                                }
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .setNegativeButton(("取消"), null)
+                        .show();
             }
         });
 

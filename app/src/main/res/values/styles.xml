@@ -58,7 +58,7 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">64sp</item>
-        <item name="android:fontFamily">sans-serif-condensed</item>
+        <!--<item name="android:fontFamily">sans-serif-condensed</item>-->
         <!--<item name="android:fontFamily">sans-serif-light</item>-->
         <item name="android:textColor">@color/colorTextLight</item>
         <item name="android:shadowColor">@color/colorTextDark2nd</item>

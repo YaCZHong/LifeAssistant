@@ -14,9 +14,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Fade;
-import android.transition.Slide;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -46,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_weather:
-                    viewPager.setCurrentItem(0);
+                    viewPager.setCurrentItem(0, false);
                     return true;
                 case R.id.navigation_home:
-                    viewPager.setCurrentItem(1);
+                    viewPager.setCurrentItem(1, false);
                     return true;
                 case R.id.navigation_setting:
-                    viewPager.setCurrentItem(2);
+                    viewPager.setCurrentItem(2, false);
                     return true;
             }
             return false;
@@ -172,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-           // Log.d("MainActivity:","Receice...");
+            // Log.d("MainActivity:","Receice...");
 
             final String selectCity = PrefsUtil.getInfoFromPrefs(MainActivity.this, "selectCity");
             if (selectCity != null) {

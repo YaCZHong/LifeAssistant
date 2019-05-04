@@ -94,14 +94,14 @@
                 </LinearLayout>
 
                 <TextView
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:paddingStart="36dp"
-                android:text="通知栏"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="36dp"
+                    android:text="通知栏"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="match_parent"
@@ -168,6 +168,7 @@
                         android:padding="6dp"
                         android:src="@drawable/ic_right_select" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -215,6 +216,7 @@
                     android:id="@+id/auto_update_frequency"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
+                    android:layout_marginBottom="24dp"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:orientation="horizontal"

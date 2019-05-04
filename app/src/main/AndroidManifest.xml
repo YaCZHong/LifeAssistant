@@ -94,6 +94,10 @@
             android:name=".service.NotificationService"
             android:enabled="true"
             android:exported="true" />
+        <service
+            android:name=".service.AutoUpdateWeather"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity
             android:name=".WeatherAlertActivity"
